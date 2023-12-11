@@ -44,13 +44,7 @@ namespace Route_builder
             this.back_but = new System.Windows.Forms.Button();
             this.clear_but = new System.Windows.Forms.Button();
             this.optimize_graph_but = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.build_but = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.distance_textBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,6 +60,8 @@ namespace Route_builder
             this.del_but = new System.Windows.Forms.Button();
             this.mapsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mapsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.optimize_comboBox = new System.Windows.Forms.ComboBox();
+            this.build_route_comboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -153,6 +149,8 @@ namespace Route_builder
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.build_route_comboBox);
+            this.tabPage1.Controls.Add(this.optimize_comboBox);
             this.tabPage1.Controls.Add(this.ruler_cb);
             this.tabPage1.Controls.Add(this.finish_cb);
             this.tabPage1.Controls.Add(this.point_cb);
@@ -160,13 +158,7 @@ namespace Route_builder
             this.tabPage1.Controls.Add(this.back_but);
             this.tabPage1.Controls.Add(this.clear_but);
             this.tabPage1.Controls.Add(this.optimize_graph_but);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.textBox3);
             this.tabPage1.Controls.Add(this.build_but);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.radioButton2);
-            this.tabPage1.Controls.Add(this.radioButton1);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.distance_textBox);
             this.tabPage1.Controls.Add(this.label1);
@@ -218,17 +210,17 @@ namespace Route_builder
             // 
             // route_but
             // 
-            this.route_but.Location = new System.Drawing.Point(14, 352);
+            this.route_but.Location = new System.Drawing.Point(113, 191);
             this.route_but.Name = "route_but";
-            this.route_but.Size = new System.Drawing.Size(157, 23);
+            this.route_but.Size = new System.Drawing.Size(70, 23);
             this.route_but.TabIndex = 17;
-            this.route_but.Text = "build route";
+            this.route_but.Text = "build";
             this.route_but.UseVisualStyleBackColor = true;
             this.route_but.Click += new System.EventHandler(this.route_but_Click);
             // 
             // back_but
             // 
-            this.back_but.Location = new System.Drawing.Point(93, 280);
+            this.back_but.Location = new System.Drawing.Point(108, 122);
             this.back_but.Name = "back_but";
             this.back_but.Size = new System.Drawing.Size(75, 23);
             this.back_but.TabIndex = 16;
@@ -238,7 +230,7 @@ namespace Route_builder
             // 
             // clear_but
             // 
-            this.clear_but.Location = new System.Drawing.Point(14, 280);
+            this.clear_but.Location = new System.Drawing.Point(9, 122);
             this.clear_but.Name = "clear_but";
             this.clear_but.Size = new System.Drawing.Size(75, 23);
             this.clear_but.TabIndex = 15;
@@ -248,31 +240,13 @@ namespace Route_builder
             // 
             // optimize_graph_but
             // 
-            this.optimize_graph_but.Location = new System.Drawing.Point(14, 309);
+            this.optimize_graph_but.Location = new System.Drawing.Point(115, 160);
             this.optimize_graph_but.Name = "optimize_graph_but";
-            this.optimize_graph_but.Size = new System.Drawing.Size(75, 23);
+            this.optimize_graph_but.Size = new System.Drawing.Size(68, 23);
             this.optimize_graph_but.TabIndex = 14;
             this.optimize_graph_but.Text = "optimize";
             this.optimize_graph_but.UseVisualStyleBackColor = true;
             this.optimize_graph_but.Click += new System.EventHandler(this.optimize_graph_but_Click);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(110, 157);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Speed:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(98, 177);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(73, 22);
-            this.textBox3.TabIndex = 11;
             // 
             // build_but
             // 
@@ -282,53 +256,14 @@ namespace Route_builder
             this.build_but.Name = "build_but";
             this.build_but.Size = new System.Drawing.Size(72, 45);
             this.build_but.TabIndex = 10;
-            this.build_but.Text = "Build";
+            this.build_but.Text = "Draw";
             this.build_but.UseVisualStyleBackColor = false;
             this.build_but.Click += new System.EventHandler(this.build_but_Click);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(110, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Hours:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(98, 130);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(73, 22);
-            this.textBox2.TabIndex = 8;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(125, 92);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(17, 16);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(47, 92);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(17, 16);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 110);
+            this.label2.Location = new System.Drawing.Point(11, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 17);
             this.label2.TabIndex = 5;
@@ -336,7 +271,7 @@ namespace Route_builder
             // 
             // distance_textBox
             // 
-            this.distance_textBox.Location = new System.Drawing.Point(17, 130);
+            this.distance_textBox.Location = new System.Drawing.Point(110, 88);
             this.distance_textBox.Name = "distance_textBox";
             this.distance_textBox.Size = new System.Drawing.Size(73, 22);
             this.distance_textBox.TabIndex = 4;
@@ -487,6 +422,23 @@ namespace Route_builder
             // 
             this.mapsBindingSource.DataMember = "Maps";
             // 
+            // optimize_comboBox
+            // 
+            this.optimize_comboBox.FormattingEnabled = true;
+            this.optimize_comboBox.Location = new System.Drawing.Point(9, 160);
+            this.optimize_comboBox.Name = "optimize_comboBox";
+            this.optimize_comboBox.Size = new System.Drawing.Size(100, 24);
+            this.optimize_comboBox.TabIndex = 21;
+            this.optimize_comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // build_route_comboBox
+            // 
+            this.build_route_comboBox.FormattingEnabled = true;
+            this.build_route_comboBox.Location = new System.Drawing.Point(9, 190);
+            this.build_route_comboBox.Name = "build_route_comboBox";
+            this.build_route_comboBox.Size = new System.Drawing.Size(100, 24);
+            this.build_route_comboBox.TabIndex = 22;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -536,15 +488,9 @@ namespace Route_builder
         private System.Windows.Forms.Button search_but;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox map_scale_textBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox distance_textBox;
         private System.Windows.Forms.Button build_but;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button optimize_graph_but;
         private System.Windows.Forms.Button back_but;
         private System.Windows.Forms.Button clear_but;
@@ -553,6 +499,8 @@ namespace Route_builder
         private System.Windows.Forms.CheckBox point_cb;
         private System.Windows.Forms.CheckBox ruler_cb;
         private System.Windows.Forms.CheckBox finish_cb;
+        private System.Windows.Forms.ComboBox optimize_comboBox;
+        private System.Windows.Forms.ComboBox build_route_comboBox;
     }
 }
 

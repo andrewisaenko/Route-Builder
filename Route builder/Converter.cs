@@ -8,7 +8,7 @@ namespace Route_builder
 {
     class Converter
     {
-        public Graph graph { get; set; }
+        public Graph graph { private get; set; }
 
         public int[] CpValueToArr()
         {
@@ -30,7 +30,7 @@ namespace Route_builder
             }
             return coordinates;
         }
-        public double[,] GetMatrix()
+        public double[,] EdgeLengthToMatrix()
         {
             var matrix = new double[graph.Vertexes.Count, graph.Vertexes.Count];
             foreach (var edge in graph.Edges)
@@ -47,9 +47,9 @@ namespace Route_builder
         {
             return CpCoordinatesArrToString(CpCoordinatesToArr());
         }
-        public string MatrixToString()
+        public string EdgeLengthMatrixToString()
         {
-            return MatrixToString(GetMatrix());
+            return EdgeLengthMatrixToString(EdgeLengthToMatrix());
         }
         public string CpValueToString()
         {
@@ -68,7 +68,7 @@ namespace Route_builder
             }
             return str.Trim();
         }
-        public static string MatrixToString(double[,] arr)
+        public static string EdgeLengthMatrixToString(double[,] arr)
         {
             string str = "";
             for (int i = 0; i < arr.GetLength(0); i++)
@@ -96,7 +96,7 @@ namespace Route_builder
             }
             return arr;
         }
-        public static double[,] MatrixStringToArr(string str)
+        public static double[,] EdgeLengthStringToArr(string str)
         {
             string[] s = str.Split(' ');
             int size = Convert.ToInt32(Math.Sqrt(s.Length));
@@ -127,7 +127,7 @@ namespace Route_builder
             int[,] CpCoordinatesArr = CpCoordinatesStringToArr(CpCoordinates);
             return ArrToVertexes(CpValueArr, CpCoordinatesArr);
         }
-        public static Graph MatrixToEdges(Graph graph, double[,] matrix)
+        public static Graph EdgeLengthMatrixToEdges(Graph graph, double[,] matrix)
         {
 
             if (graph.Vertexes.Count != 0)
@@ -145,11 +145,20 @@ namespace Route_builder
             }
             return graph;
         }
-        public static Graph MatrixStringToEdges(Graph graph, string matrixString)
+        public static Graph EdgeLengthStringToEdges(Graph graph, string matrixString)
         {
-            double[,] matrix = MatrixStringToArr(matrixString);
-            return MatrixToEdges(graph, matrix);
+            double[,] matrix = EdgeLengthStringToArr(matrixString);
+            return EdgeLengthMatrixToEdges(graph, matrix);
         }
 
+        public List<Vertex> CpOrderIndexesToVertexList(List<int> cpIndexes)
+        {
+            graph.CpOrder = new List<Vertex>();
+            for (int i = 0; i < cpIndexes.Count; i++)
+            {               
+                graph.CpOrder.Add(graph.Vertexes[cpIndexes[i]]);
+            }
+            return graph.CpOrder;
+        }
     }
 }

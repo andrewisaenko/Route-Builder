@@ -93,46 +93,6 @@ namespace Route_builder.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_centimeter_85__1_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8-centimeter-85 (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_centimeter_85__2_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8-centimeter-85 (2)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_ruler_64 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-ruler-64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_ruler_641 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-ruler-641", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_булавка_для_карты_48__4_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-булавка-для-карты-48 (4)", resourceCulture);
@@ -153,69 +113,9 @@ namespace Route_builder.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_рулетка_16 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-рулетка-16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_рулетка_16__1_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8-рулетка-16 (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_рулетка_27_2 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-рулетка-27 2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_рулетка_27_ф {
             get {
                 object obj = ResourceManager.GetObject("icons8-рулетка-27 ф", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_рулетка_271 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-рулетка-271", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_рулетка_48__1_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8-рулетка-48 (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_рулетка_48__2_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8-рулетка-48 (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

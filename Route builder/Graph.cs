@@ -19,7 +19,10 @@ namespace Route_builder
         public double BufRouteLength;
         public int BufRouteValue;
 
+        //double nextStepDistance;
+
         public double plannedDisnance;
+        
 
         public Converter Converter = new Converter();
 
@@ -28,10 +31,15 @@ namespace Route_builder
             Converter.graph = this;
         }
 
-
-
         public int VertexCount => Vertexes.Count;
         public int EdgeCount => Edges.Count;
+
+        public void BuildRouteAntColonyOptimization()
+        {
+             AntColony antColony = new AntColony(this.Converter.EdgeLengthToMatrix(), this.Converter.CpValueToArr());
+             CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO());                      
+
+        }
 
         public void AddVertex(int number, int x, int y)
         {
@@ -213,18 +221,21 @@ namespace Route_builder
 
         public void FindBestRoute(double dist)
         {
+
             plannedDisnance = dist;
             BufCpOrder = new List<Vertex>();
             BufCpOrder.Add(Vertexes.Find(x => x.Number == 1));
             FindNextStep();
+
         }
 
         private void FindNextStep()
         {
             List<Vertex> Vlist = GetVertexList(BufCpOrder.Last());
+           double nextStepDistance;
             for (int i = 0; i < Vlist.Count; i++)
             {
-                double nextStepDistance = Edge.CalculateLength(Vlist[i], BufCpOrder[BufCpOrder.Count - 1]);
+                nextStepDistance = Edge.CalculateLength(Vlist[i], BufCpOrder[BufCpOrder.Count - 1]);
                 BufRouteLength += nextStepDistance;
                 if (BufRouteLength < plannedDisnance)
                 {

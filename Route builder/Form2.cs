@@ -26,7 +26,7 @@ namespace Route_builder
                 d(CPnumberTB.Text);
                 Close();
             }
-            else if(Convert.ToInt32(CPnumberTB.Text) < 10 || Convert.ToInt32(CPnumberTB.Text) > 999 )
+            else if(Convert.ToInt32(CPnumberTB.Text) < 10 || Convert.ToInt32(CPnumberTB.Text) > 999 || CPnumberTB.Text == "")
             {
                 MessageBox.Show("CP number must be two-digit or three-digit");
             }

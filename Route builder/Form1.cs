@@ -32,6 +32,11 @@ namespace Route_builder
         private void Form1_Load(object sender, EventArgs e)
         {           
             pictureBox1.AllowDrop = true;
+            optimize_comboBox.Items.AddRange(new string[] {"Triangle", "Angle"});
+            optimize_comboBox.SelectedIndex = 0;
+            build_route_comboBox.Items.AddRange(new string[] { "Deep search", "Ant colony" });
+            build_route_comboBox.SelectedIndex = 1;
+
         }
 
         private void PictureBox1_DragEnter(object sender, DragEventArgs e)  // Drag&Drop event
@@ -135,7 +140,7 @@ namespace Route_builder
                     graph = Converter.StringToVertexes(map.cpValue, map.cpCoordinates);
                     if(map.distanseBeetweenCP != "")
                     {
-                        graph = Converter.MatrixStringToEdges(graph, map.distanseBeetweenCP);
+                        graph = Converter.EdgeLengthStringToEdges(graph, map.distanseBeetweenCP);
                     }
                 } 
                 map_name_textBox.Text = map.name;
@@ -242,7 +247,9 @@ namespace Route_builder
             //  foreach (Edge edge in graph.Edges)
             //  {
             //      img = ImgFunc.DrawLine(new Point(edge.From.X, edge.From.Y), new Point(edge.To.X, edge.To.Y), img);
-            //  }
+            //  }           
+
+
             if(buffer != null && pictureBox1.Image != null) 
             {
                 Image img = buffer.Last();
@@ -258,18 +265,20 @@ namespace Route_builder
 
         private void optimize_graph_but_Click(object sender, EventArgs e)
         {
-            //graph.CpOrder?.Clear();
-            //graph.RouteLength = 0;
-            //graph.RouteValue = 0;
-            pictureBox1.Image = buffer.Last();
-
+            graph.CpOrder?.Clear();
+            graph.RouteLength = 0;
+            graph.RouteValue = 0;
+            //pictureBox1.Image = buffer.Last();
 
             graph.Edges.Clear();
             graph.BuildAllEdges();
-           graph.OptimizeGraphByTriangle();
-              
-            
-            //graph.OptimizeGraph();
+
+            //switch (optimize_comboBox.SelectedIndex)
+            //{                
+            //    case 0: graph.OptimizeGraphByTriangle(); break;
+            //    case 1: graph.OptimizeGraph(); break;
+            //}
+        
         }
 
         private void clear_but_Click(object sender, EventArgs e)
@@ -290,16 +299,22 @@ namespace Route_builder
 
         private void route_but_Click(object sender, EventArgs e)
         {
-            if (distance_textBox.Text != "" && map_scale_textBox.Text != "" && ruler.scale_px>0)
+            if (distance_textBox.Text != "" && map_scale_textBox.Text != "" && ruler != null &&ruler.scale_px>0)
             {
+                optimize_graph_but.PerformClick();
+
                 ruler.plannedDistanсeKm = Convert.ToDouble(distance_textBox.Text);
                 ruler.scale_m = Convert.ToDouble(map_scale_textBox.Text);
 
-
                 Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();    
+                stopwatch.Start();               
+
+                switch (build_route_comboBox.SelectedIndex)
+                {
+                    case 0: graph.FindBestRoute(ruler.CalculateDistanceInPx()); break;
+                    case 1: graph.BuildRouteAntColonyOptimization(); break;
+                }
                 
-                graph.FindBestRoute(ruler.CalculateDistanceInPx());
                 pictureBox1.Image = ImgFunc.DrawRoute(pictureBox1.Image, graph);
 
                 stopwatch.Stop();
@@ -313,7 +328,7 @@ namespace Route_builder
             {
                 map.cpCoordinates = graph.Converter.CpCoordinatesToString();
                 map.cpValue = graph.Converter.CpValueToString();
-                map.distanseBeetweenCP = graph.Converter.MatrixToString();
+                map.distanseBeetweenCP = graph.Converter.EdgeLengthMatrixToString();
 
                 Crud.UpdateMap(map);
                 dataGridView1.DataSource = Crud.GetDataFromDB();
@@ -343,7 +358,12 @@ namespace Route_builder
         {
             point_cb.Checked = false;
             finish_cb.Checked = false;            
-        }        
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     public delegate void MyDelegate(string data);
 }
