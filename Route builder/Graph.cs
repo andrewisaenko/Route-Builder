@@ -19,8 +19,6 @@ namespace Route_builder
         public double BufRouteLength;
         public int BufRouteValue;
 
-        //double nextStepDistance;
-
         public double plannedDisnance;
         
 
@@ -36,9 +34,99 @@ namespace Route_builder
 
         public void BuildRouteAntColonyOptimization()
         {
-             AntColony antColony = new AntColony(this.Converter.EdgeLengthToMatrix(), this.Converter.CpValueToArr());
-             CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO());                      
+            double[,] rouleLenthesByDistance = new double[5, 5];
 
+            AntColony antColony = new AntColony(this.Converter.EdgeLengthToMatrix(), this.Converter.CpValueToArr());
+
+            CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO(500));
+            rouleLenthesByDistance[0, 1] = CalculateRouteLenth();
+
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO(50));
+            //    rouleLenthesByDistance[0, i] = CalculateRouteLenth();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO(100));
+            //    rouleLenthesByDistance[1, i] = CalculateRouteLenth();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO(200));
+            //    rouleLenthesByDistance[2, i] = CalculateRouteLenth();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO(500));
+            //    rouleLenthesByDistance[3, i] = CalculateRouteLenth();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO(1000));
+            //    rouleLenthesByDistance[4, i] = CalculateRouteLenth();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACO(2000));
+            //    rouleLenthesByDistance[5, i] = CalculateRouteLenth();
+            //}
+
+
+        }
+
+        public void BuildRouteAntColonyOptimizationForRogaine(double dist)
+        {
+            //plannedDistancePx = (plannedDistanсeKm * 1000 * scale_px) / scale_m;
+            //dist = (52 * 1000 * 108) / 1000;
+            //double[,,] rouleInfo = new double[2, 5, 5];
+
+            AntColony antColony = new AntColony(this.Converter.EdgeLengthToMatrix(), this.Converter.CpValueToArr());
+            CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 500));
+
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 50));
+            //    rouleInfo[0, 0, i] = CalculateRouteLenth();
+            //    rouleInfo[1, 0, i] = CalculateRouteValue();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 100));
+            //    rouleInfo[0, 1, i] = CalculateRouteLenth();
+            //    rouleInfo[1, 1, i] = CalculateRouteValue();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 200));
+            //    rouleInfo[0, 2, i] = CalculateRouteLenth();
+            //    rouleInfo[1, 2, i] = CalculateRouteValue();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 500));
+            //    rouleInfo[0, 3, i] = CalculateRouteLenth();
+            //    rouleInfo[1, 3, i] = CalculateRouteValue();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 1000));
+            //    rouleInfo[0, 4, i] = CalculateRouteLenth();
+            //    rouleInfo[1, 4, i] = CalculateRouteValue();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 2000));
+            //    rouleInfo[0, 5, i] = CalculateRouteLenth();
+            //    rouleInfo[1, 5, i] = CalculateRouteValue();
+
+            //    CpOrder = Converter.CpOrderIndexesToVertexList(antColony.ACOforRogaine(dist, 5000));
+            //    rouleInfo[0, 6, i] = CalculateRouteLenth();
+            //    rouleInfo[1, 6, i] = CalculateRouteValue();
+            //}
+
+        }
+
+
+
+        private double CalculateRouteLenth()
+        {
+            double currentRouteLenth = 0;
+            for (int i = 1; i < CpOrder.Count; i++)
+            {
+                currentRouteLenth += Edge.CalculateLength(CpOrder[i - 1], CpOrder[i]);
+            }
+            return currentRouteLenth;
+        }
+
+        private double CalculateRouteValue()
+        {
+            int currentRouteValue= 0;
+            for (int i = 1; i < CpOrder.Count; i++)
+            {
+                currentRouteValue+= CpOrder[i].Number/10;
+            }
+            return currentRouteValue;
         }
 
         public void AddVertex(int number, int x, int y)

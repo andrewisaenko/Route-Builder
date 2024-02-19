@@ -37,6 +37,8 @@ namespace Route_builder
             this.save_img_button = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.build_route_comboBox = new System.Windows.Forms.ComboBox();
+            this.optimize_comboBox = new System.Windows.Forms.ComboBox();
             this.ruler_cb = new System.Windows.Forms.CheckBox();
             this.finish_cb = new System.Windows.Forms.CheckBox();
             this.point_cb = new System.Windows.Forms.CheckBox();
@@ -60,8 +62,6 @@ namespace Route_builder
             this.del_but = new System.Windows.Forms.Button();
             this.mapsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mapsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.optimize_comboBox = new System.Windows.Forms.ComboBox();
-            this.build_route_comboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -170,6 +170,24 @@ namespace Route_builder
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Map";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // build_route_comboBox
+            // 
+            this.build_route_comboBox.FormattingEnabled = true;
+            this.build_route_comboBox.Location = new System.Drawing.Point(9, 190);
+            this.build_route_comboBox.Name = "build_route_comboBox";
+            this.build_route_comboBox.Size = new System.Drawing.Size(100, 24);
+            this.build_route_comboBox.TabIndex = 22;
+            
+            // 
+            // optimize_comboBox
+            // 
+            this.optimize_comboBox.FormattingEnabled = true;
+            this.optimize_comboBox.Location = new System.Drawing.Point(9, 160);
+            this.optimize_comboBox.Name = "optimize_comboBox";
+            this.optimize_comboBox.Size = new System.Drawing.Size(100, 24);
+            this.optimize_comboBox.TabIndex = 21;
+            
             // 
             // ruler_cb
             // 
@@ -421,23 +439,6 @@ namespace Route_builder
             // mapsBindingSource
             // 
             this.mapsBindingSource.DataMember = "Maps";
-            // 
-            // optimize_comboBox
-            // 
-            this.optimize_comboBox.FormattingEnabled = true;
-            this.optimize_comboBox.Location = new System.Drawing.Point(9, 160);
-            this.optimize_comboBox.Name = "optimize_comboBox";
-            this.optimize_comboBox.Size = new System.Drawing.Size(100, 24);
-            this.optimize_comboBox.TabIndex = 21;
-            this.optimize_comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // build_route_comboBox
-            // 
-            this.build_route_comboBox.FormattingEnabled = true;
-            this.build_route_comboBox.Location = new System.Drawing.Point(9, 190);
-            this.build_route_comboBox.Name = "build_route_comboBox";
-            this.build_route_comboBox.Size = new System.Drawing.Size(100, 24);
-            this.build_route_comboBox.TabIndex = 22;
             // 
             // Form1
             // 
